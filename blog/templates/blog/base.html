@@ -32,10 +32,11 @@
 														<a class="nav-item nav-link" href="">{{user.username}}</a>
 														<a class="nav-item nav-link" href=""> 
 																<i class="fa fa-sign-out-alt">Logout</i> 
+														<a class="nav-item nav-link" href="{%url 'register'%}">Register</a>
 														</a>
 														{% else %}
 														<a class="nav-item nav-link" href="">Login</a>
-														<a class="nav-item nav-link" href="">Register</a>
+														<a class="nav-item nav-link" href="{%url 'register'%}">Register</a>
 														{% endif %}
 												</div>
 										</div>
@@ -47,7 +48,8 @@
 						<div class="col-md-8">
 								{%if messages %} 
 								{% for message  in messages %}
-								<div class="alert alert-">{{message}}</div>
+								<div class="alert alert-{{message.tags}}">
+										{{message}}</div>
 								{% endfor %}
 								{%endif%}
 								{% block content %}{% endblock %}
