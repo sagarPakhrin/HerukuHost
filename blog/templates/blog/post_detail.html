@@ -9,7 +9,14 @@ Detail
 		<div class="media-body">
 				<div class="article-metadata">
 						<a class="mr-2" href="#">{{ object.author }}</a>
-						<small class="text-muted">{{ object.date_posted }}</small>
+						<small class="text-muted">{{ object.date_posted|date:"F d,Y"}}</small>
+
+						{% if object.author == user %}
+						<div>
+								<a class="btn btn-secondary" href="{%url 'post-update' object.pk%}">Update</a>
+								<a class="btn btn-danger" href="{%url 'post-delete' object.pk%}">Delete</a>
+						</div>
+						{% endif %}
 				</div>
 				<h2 class="article-title" >{{ object.title }}</h2>
 				<p class="article-content">{{ object.content }}</p>
